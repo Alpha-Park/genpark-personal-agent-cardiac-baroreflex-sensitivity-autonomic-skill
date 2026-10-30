@@ -1,0 +1,57 @@
+{
+  "name": "genpark-personal-agent-cardiac-baroreflex-sensitivity-autonomic-skill",
+  "version": "1.0.0",
+  "title": "Cardiac Baroreflex Sensitivity (BRS) & Vagal Tone Sentinel Skill",
+  "description": "Sequence method Baroreflex Sensitivity (BRS ms/mmHg), blood pressure-to-RR interval cross-correlation, and autonomic vagal failure screener. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "baroreflex-sensitivity",
+    "vagal-tone",
+    "autonomic-nervous-system",
+    "hrv",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "compute_baroreflex_sensitivity_index",
+      "description": "Calculate BRS slope (ms/mmHg) from continuous beat-to-beat systolic pressure and ECG RR-intervals.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rr_interval_delta_ms": {
+            "type": "number"
+          },
+          "systolic_pressure_delta_mmhg": {
+            "type": "number"
+          },
+          "baseline_hrv_rmssd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "rr_interval_delta_ms",
+          "systolic_pressure_delta_mmhg"
+        ]
+      }
+    },
+    {
+      "name": "synthesize_vagal_nerve_stimulation_protocol",
+      "description": "Formulate resonant frequency slow-paced breathing (0.1 Hz / 6 breaths/min) to restore baroreflex buffering.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "brs_score": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "brs_score"
+        ]
+      }
+    }
+  ]
+}
